@@ -1,0 +1,145 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-color: #f3f1e9;
+}
+header{
+    grid-area: header;
+    height: 10vh; /* 기존 60px 대신 화면 높이의 10% 사용 */
+    margin: 10px;
+}
+#main {
+    grid-area: main;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #464646;
+    overflow: hidden;
+   /* float: left;*/
+    width: 60vw; /* 고정된 430px 대신 화면 너비의 60% 사용 */
+    height: 70vh; /* 화면 높이의 70% 사용 */
+}
+#login {
+    margin-top: 40px;
+}
+aside#right{
+    grid-area: asideRight;
+    padding:0px;
+    margin-left: 10px;
+    width: 20vh; /* 기존 200px 대신 화면 너비의 20% 사용 */
+    /*float: left;*/
+}
+footer{
+    grid-area: footer;
+    width: 100vw; /* % 대신 vw로 단위 교체 */
+    height: 10vh; /* 기존 50px 대신 화면 높이의 10% 사용 */
+    /*clear:both;*/
+    background-color: url(images/footer_bg\ \(2\).gif);
+    background-position: top left;
+    background-repeat: repeat-x;
+}
+#article1, #article1 iframe {
+    width: 100%; /* 부모 컨테이너인 #main의 크기에 따라 조정 */
+    height: 100%; /* 부모 컨테이너인 #main의 높이에 따라 조정 */
+}
+body#body1 {
+    display: grid;
+    grid-template-columns: 15vw auto 20vw; /* 왼쪽 사이드바, 메인 콘텐츠, 오른쪽 사이드바 크기 조정 */
+    grid-template-rows: auto 1fr auto; /* 행 크기를 내용에 따라 자동 조정 */
+    grid-template-areas:
+        "header header header"
+        "nav nav nav"
+        "asideLeft main asideRight"
+        "footer footer footer";
+    background-color: #F3F1E9;
+}
+
+@media (max-width: 768px) {
+    * {
+        font-size: 1rem;
+    }
+    nav ul { /* 메뉴 항목 스타일 조정 */
+        padding: 20px 0;
+    }
+    nav ul li {
+        display: block;
+        padding: 15px;
+        margin: 5px auto;
+        width: 100%;
+    }
+    nav ul li a {
+        display: block;
+        text-decoration: none;
+    }
+    nav ul li a:active { /* 활성화된 링크 스타일 */
+        text-decoration: underline;
+    }
+    /* 사이드바, 메인 콘텐츠 영역 너비 및 텍스트 정렬 조정 */
+    aside#left, aside#right, #main {
+        width: 100%;
+        /*float: none;*/
+        margin-top: 10px;
+        padding: 20px 0;
+        text-align: center;
+    }
+    #left ul li, #right div { /* 사이드바 내부 항목 스타일 조정 */
+        margin: 10px 0;
+    }
+    #left ul li a, #right div a {
+        padding: 20px;
+    }
+    #left ul li a:active, #right div a:active { /* 사이드바 링크 활성화 스타일 */
+        background: #e60405;
+    }
+    footer { /* 푸터 스타일 조정 */
+        grid-area: footer;
+        height: auto;
+        background-color: #e0e0e0;
+        background-image: none; /* 모바일에서 배경 이미지 제거 */
+    }
+    header {
+        grid-area: header;
+        height: auto;
+    }
+    nav {
+        grid-area: nav;
+    }
+    main {
+        grid-area: main;
+    }
+    aside#left {
+        grid-area: asideLeft;
+    }
+    aside#right {
+        grid-area: asideRight;
+    }
+    body#body1 {
+        display: grid;
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "asideLeft"
+            "asideRight"
+            "footer";
+        grid-template-columns: 1fr; /* 모든 영역을 한 줄로 표시 */
+        grid-template-rows: auto; /* 자동 행 높이 설정 */
+    }
+    div.product {
+        width: 100%;
+        float: none;
+        margin-bottom: 10px;
+    }
+    #right #login form { /* 로그인 폼 스타일 조정 */
+        text-align: left;
+    }
+    #right #login form input[type="text"],
+    #right #login form input[type="password"],
+    #right #login form input[type="submit"],
+    #right #login form input[type="reset"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+}
